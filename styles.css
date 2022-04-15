@@ -1,0 +1,199 @@
+html {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+  }
+
+  h2 {
+    margin: 0;
+  }
+
+a {
+  margin-top: 2rem;
+  color: black;
+  text-decoration: none;
+}
+
+a:visited {
+  color: lightblue;
+}
+a:active {
+  background-color: yellow;
+  color: black;
+}
+
+section {
+  padding-top: 4em;
+  display: none;
+  position: absolute;
+  width: 100%;
+  background: linear-gradient(to bottom right, blue, yellow); 
+  height: 100vh;
+}
+
+nav {
+  padding: 1rem;
+  position: absolute;
+  z-index: 99;
+  font-size: 2rem;
+}
+
+section:target {
+  display: block;
+}
+#home {
+  display: block;
+}
+
+@keyframes moveInLeft {
+  0%{
+    opacity: 0;
+    transform: translateX(-10rem);
+  }  
+  80% {
+    transform: translateX(1rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+
+@keyframes moveInRight {
+  0%{
+    opacity: 0;
+    transform: translateX(10rem);
+  }
+  80% {
+    transform: translateX(-1rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+
+.animationHead {
+  animation-name: moveInLeft;
+  animation-duration: 1s;
+}
+
+.animationBtn {
+  animation-name: moveInRight;
+  animation-duration: 1s;
+}
+
+.centerHead1 {
+  margin: 10rem 0 0 0;
+  text-align: center;
+  font-size: 10rem;
+  background: -webkit-linear-gradient(yellow, blue);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.centerHead2{
+  text-align: center;
+  color: blue;
+}
+
+.name {
+  font-size: 3rem;
+  color: darkblue;
+  text-align: center;
+  margin-top: 4rem;
+}
+
+.changeName {
+  display: flex;
+  justify-content: center;
+}
+
+.btn-add {
+  text-transform: uppercase;
+  background-color: lightgoldenrodyellow;
+  color: darkblue;
+  display: inline-block;
+  border-radius: 5rem;
+  padding: .5rem;
+  margin-top: 2rem;
+  cursor: pointer;
+  width: 10rem;
+}
+
+.btn {
+  cursor: pointer;
+  text-transform: uppercase;
+  background-color: lightgoldenrodyellow;
+  color: darkblue;
+  padding: 1rem 4rem;
+  border: none;
+  display: inline-block;
+  border-radius: 5rem;
+  margin: 3rem 0 2rem 0;
+  transition: all .2s;
+  position: relative;
+}
+
+.btn:hover, .btn-add:hover {
+  transform: translateY(-.3rem);
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, .2);
+}
+
+.btn:active, .btn-add:hover {
+  transform: translateY(-.1rem);
+  box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .2);
+}
+
+.btn::after {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  border-radius: 5rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  background-color: lightgoldenrodyellow;
+  transition: all .4s;
+}
+
+.btn:hover::after {
+  transform: scaleX(1.4) scaleY(1.6);
+  opacity: 0;
+}
+
+.newName {
+  text-align: center;
+  font-size: 1.7rem;
+  color: darkblue;
+}
+.newPost {
+  font-size: 1.5rem;
+  color: darkblue;
+  width: 46rem;
+  float: left;
+  margin-right: 2rem;
+}
+
+.post-card {
+  float: left;
+  height: 14rem;
+  width: 14rem;
+  background-color: lightgoldenrodyellow;
+  opacity: .6;
+  font-size: 1.5rem;
+  padding: 1.5rem;
+  text-align: center;
+  border-radius: 5px;
+  box-shadow: 0 1.5rem 4rem rgba(black, .15);
+  margin: 3rem 1rem;
+  transition: transition .3s;
+}
+
+.post-card:hover {
+  transform: translateY(-1.5rem) scale(1.03);
+}

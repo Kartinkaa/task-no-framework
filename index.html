@@ -1,134 +1,142 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>test</title>
-    <link rel="stylesheet" href="styles.css">
-    <script defer src="index.js"></script>
-    <script defer src="posts.js"></script>
-    <script defer src="comments.js"></script>
-</head>
-<body>
-    <nav>
-        <a href="#">Home</a> |
-        <a href="#about">About user</a> |
-        <a href="#add">Add new</a> |
-        <a href="#posts">Posts</a> |
-        <a href="#comments">Comments</a>
-      </nav>
-      <section id="home">
-        <h1 class="animationHead" id="header"></h1>
-      </section>
-      <section id="about">
-        <h3 class="animationHead name" id="profile"></h3>
-        <h4 class="centerHead2" style="font-size: 2rem; margin: 0 0 1rem; color: darkblue;">Would you like to change your name?</h4>
-        <div class="newName">Enter new name here: 
-            <input id="newName" type="text" style="font-size: 1.2rem; background-color: lightgoldenrodyellow;"/>
-        </div>
-        <div class="changeName animationBtn">
-            <button onclick="changeName()" class="btn">Change my name</button>
-        </div>
-        <div>
-            <img style="opacity: .4; width: 100%; height: 27rem;" src="./img/shutterstock_638823838-1280x640.jpeg" />
-        </div>
-      </section>
-      <section id="add">
-        <div class="newPost"><h3>Add new post</h3>
-            <div>Enter title and author of the new post and split them by comma: <br/>
-                <input 
-                id="newPost" 
-                placeholder="title, author" 
-                type="text" 
-                style="font-size: 1.2rem; background-color: lightgoldenrodyellow; width: 30rem; margin-top: 1rem;"/>
-            </div>
-            <div class="changeName animationBtn">
-                <button onclick="addPost()" class="btn-add">Add new post</button>
-            </div>
-            <hr/>
-            <div>
-                <div> Enter id of edition post, title and author. Split them by comma:
-                    <input id="idEdit" type="string" placeholder="enter id, title, author" style="font-size: 1.2rem; background-color: lightgoldenrodyellow; width: 15rem; margin-top: 1rem;"/>
-                    <button onclick="updatePost()" class="btn-add" style="width: 7rem; margin-left: 2rem;">Edit</button>
-                </div>
-                <div style="margin-top: 2rem;">Enter id: <br/>
-                    <input id="idDel" type="number" placeholder="enter id" style="font-size: 1.2rem; background-color: lightgoldenrodyellow; width: 15rem; margin-top: 1rem;"/>
-                    <button onclick="deletePost()" class="btn-add" style="width: 7rem; margin-left: 2rem;">Delete</button>
-                </div>
-            </div>
-        </div>
-        <div class="newPost"><h3>Add new comment</h3>
-            <div>Enter body and postId of the new comment and split them by comma: <br/>
-                <input 
-                id="newComment" 
-                placeholder="body and postId" 
-                type="text" 
-                style="font-size: 1.2rem; background-color: lightgoldenrodyellow; width: 30rem; margin-top: 1rem;"/>
-            </div>
-            <div class="changeName animationBtn">
-                <button onclick="addComment()" class="btn-add">Add new comment</button>
-            </div>
-            <hr/>
-            <div>
-                <div> Enter id of edition comment, body and postId. Split them by comma:<br/>
-                    <input id="edit" placeholder="enter id, body, postId" style="font-size: 1.2rem; background-color: lightgoldenrodyellow; width: 15rem; margin-top: 1rem;"/>
-                    <button onclick="updateComment()" class="btn-add" style="width: 7rem; margin-left: 2rem;">Edit</button>
-                </div>
-                <div style="margin-top: 2rem;">Enter id: <br/>
-                    <input id="del" placeholder="enter id" style="font-size: 1.2rem; background-color: lightgoldenrodyellow; width: 15rem; margin-top: 1rem;"/>
-                    <button onclick="deleteComment()" class="btn-add" style="width: 7rem; margin-left: 2rem;">Delete</button>
-                </div>
-            </div>
-        </div>
-      </section>
-      <section id="posts"></section>
-      <section id="comments"></section> 
-</body>
-</html> 
-
-
-
-<!-- =============================================================================================== -->
-
-
-
-<!-- Routing could be created without HTML -->
-<!-- <!DOCTYPE html>
-<html lang="en">
   <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>test</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script defer src="./js/index.js"></script>
+    <script defer src="./js/posts.js"></script>
+    <script defer src="./js/comments.js"></script>
   </head>
   <body>
-    <div id="app"></div>
-    <script>
-      const nav = `<a href="/">Home</a> | 
-                   <a href="/about">About user</a> | 
-                   <a href="/posts">Posts</a> |
-                   <a href="/comments">Comments</a>`;
-      const routes = {
-        "/": `<h1>Home</h1>${nav}<p>Welcome home!</p>`,
-        "/about": `<h1>About</h1>${nav}<p>This is a tiny SPA</p>`,
-        "/posts": `<h1>Posts</h1>${nav}<p>This is a tiny SPA</p>`,
-        "/commentst": `<h1>Comments</h1>${nav}<p>This is a tiny SPA</p>`,
-      };
-      const render = path => {
-        document.querySelector("#app")
-          .innerHTML = routes[path] || `<h1>404</h1>${nav}`
-        ;
-        document.querySelectorAll('[href^="/"]').forEach(el => 
-          el.addEventListener("click", evt => {
-            evt.preventDefault();
-            const {pathname: path} = new URL(evt.target.href);
-            window.history.pushState({path}, path, path);
-            render(path);
-          })
-        );
-      };
-      window.addEventListener("popstate", e =>
-        render(new URL(window.location.href).pathname)
-      );
-      render("/");
-    </script>
+    <nav>
+      <a href="#">Home</a> | <a href="#about">About user</a> |
+      <a href="#add">Add new</a> | <a href="#posts">Posts</a> |
+      <a href="#comments">Comments</a>
+    </nav>
+    <section id="home">
+      <h1 class="animationHead" id="header"></h1>
+    </section>
+    <section id="about">
+      <h3 class="animationHead name" id="profile"></h3>
+      <h4 class="centerHead2">Would you like to change your name?</h4>
+      <div class="newName">
+        Enter new name here:
+        <input id="newName" type="text" />
+      </div>
+      <div class="send animationBtn">
+        <button onclick="changeName()" class="btn">Change my name</button>
+      </div>
+      <div>
+        <img
+          style="opacity: 0.4; width: 100%; height: 27rem"
+          src="./img/shutterstock_638823838-1280x640.jpeg"
+        />
+      </div>
+    </section>
+    <section id="add">
+      <div class="newPost">
+        <h3>Add new post</h3>
+        <div>
+          Enter title and author of the new post and split them by comma: <br />
+          <input
+            id="newPost"
+            placeholder="title, author"
+            type="text"
+            class="input-add"
+          />
+        </div>
+        <div class="send animationBtn">
+          <button onclick="addPost()" class="btn-add">Add new post</button>
+        </div>
+        <hr />
+        <div>
+          <div style="margin-top: 3rem">
+            Enter id of edition post, title and author. Split them by comma:
+            <input
+              id="idEdit"
+              type="string"
+              placeholder="enter id, title, author"
+              class="input-add"
+            />
+            <button
+              onclick="updatePost()"
+              class="btn-add"
+              style="width: 7rem; margin-left: 2rem"
+            >
+              Edit
+            </button>
+          </div>
+          <div style="margin-top: 2rem">
+            Enter id: <br />
+            <input
+              id="idDel"
+              type="number"
+              placeholder="enter id"
+              class="input-add"
+            />
+            <button
+              onclick="deletePost()"
+              class="btn-add"
+              style="width: 7rem; margin-left: 2rem"
+            >
+              Delete
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="newPost">
+        <h3>Add new comment</h3>
+        <div>
+          Enter body and postId of the new comment and split them by comma:
+          <br />
+          <input
+            id="newComment"
+            placeholder="body and postId"
+            type="text"
+            class="input-add"
+          />
+        </div>
+        <div class="send animationBtn">
+          <button onclick="addComment()" class="btn-add">
+            Add new comment
+          </button>
+        </div>
+        <hr />
+        <div>
+          <div style="margin-top: 3rem">
+            Enter id of edition comment, body and postId. Split them by
+            comma:<br />
+            <input
+              id="edit"
+              placeholder="enter id, body, postId"
+              class="input-add"
+            />
+            <button
+              onclick="updateComment()"
+              class="btn-add"
+              style="width: 7rem; margin-left: 2rem"
+            >
+              Edit
+            </button>
+          </div>
+          <div style="margin-top: 2rem">
+            Enter id: <br />
+            <input id="del" placeholder="enter id" class="input-add" />
+            <button
+              onclick="deleteComment()"
+              class="btn-add"
+              style="width: 7rem; margin-left: 2rem"
+            >
+              Delete
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="posts"></section>
+    <section id="comments"></section>
   </body>
-</html> -->
+</html>

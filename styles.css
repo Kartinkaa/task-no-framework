@@ -5,11 +5,11 @@ html {
 body {
   margin: 0;
   height: 100vh;
-  }
+}
 
-  h2 {
-    margin: 0;
-  }
+h2 {
+  margin: 0;
+}
 
 a {
   margin-top: 2rem;
@@ -20,6 +20,7 @@ a {
 a:visited {
   color: lightblue;
 }
+
 a:active {
   background-color: yellow;
   color: black;
@@ -30,7 +31,7 @@ section {
   display: none;
   position: absolute;
   width: 100%;
-  background: linear-gradient(to bottom right, blue, yellow); 
+  background: linear-gradient(to bottom right, blue, yellow);
   height: 100vh;
 }
 
@@ -44,18 +45,21 @@ nav {
 section:target {
   display: block;
 }
+
 #home {
   display: block;
 }
 
 @keyframes moveInLeft {
-  0%{
+  0% {
     opacity: 0;
     transform: translateX(-10rem);
-  }  
+  }
+
   80% {
     transform: translateX(1rem);
   }
+
   100% {
     opacity: 1;
     transform: translate(0);
@@ -63,13 +67,15 @@ section:target {
 }
 
 @keyframes moveInRight {
-  0%{
+  0% {
     opacity: 0;
     transform: translateX(10rem);
   }
+
   80% {
     transform: translateX(-1rem);
   }
+
   100% {
     opacity: 1;
     transform: translate(0);
@@ -94,9 +100,13 @@ section:target {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
-.centerHead2{
+
+.centerHead2 {
   text-align: center;
   color: blue;
+  font-size: 2rem;
+  margin: 0 0 1rem;
+  color: darkblue;
 }
 
 .name {
@@ -106,7 +116,7 @@ section:target {
   margin-top: 4rem;
 }
 
-.changeName {
+.send {
   display: flex;
   justify-content: center;
 }
@@ -171,12 +181,25 @@ section:target {
   font-size: 1.7rem;
   color: darkblue;
 }
+
+.newName input {
+  font-size: 1.2rem;
+  background-color: lightgoldenrodyellow;
+}
+
 .newPost {
   font-size: 1.5rem;
   color: darkblue;
   width: 46rem;
   float: left;
-  margin-right: 2rem;
+  margin-left: 3rem;
+}
+
+.input-add {
+  font-size: 1.2rem;
+  background-color: lightgoldenrodyellow;
+  width: 30rem;
+  margin-top: 1rem;
 }
 
 .post-card {
